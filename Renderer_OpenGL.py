@@ -13,7 +13,6 @@ deltaTime = 0.0
 pygame.init()
 
 screen = pygame.display.set_mode((width, height), pygame.OPENGL | pygame.DOUBLEBUF)
-bg_image = pygame.image.load('underwater-background.png')
 
 clock = pygame.time.Clock()
 
@@ -21,24 +20,28 @@ rend = Renderer(screen)
 rend.setShaders(vertex_shader, fragment_shader)
 rend.target.z = -5
 
-
-face = Model("MandarinFish.obj", "MandarinFish.bmp")
-face.position.z -= 5
-face.scale.x = 0.5
-face.scale.y = 0.5
-face.scale.z = 0.5
-
-rend.scene.append( face )
-
-
+option = 1
 isRunning = True
 clicking = False
 clicking_r = False
 
 while isRunning:
     
-    screen.fill((0,0,0))
-    screen.blit(bg_image, (width, height))
+
+
+    print(option)
+
+
+    face = Model("models\MandarinFish\MandarinFish.obj", "models\MandarinFish\MandarinFish.bmp")
+           
+    face.position.z -= 5
+    face.scale.x = 0.5
+    face.scale.y = 0.5
+    face.scale.z = 0.5
+
+    rend.scene.append( face )
+
+    
 
     keys = pygame.key.get_pressed()
     mouse_x, mouse_y = pygame.mouse.get_pos()
@@ -68,6 +71,12 @@ while isRunning:
                 rend.filledMode()
             elif event.key == pygame.K_x:
                 rend.wireframeMode()
+            
+            elif event.key == pygame.K_RETURN:
+                if option > 5:
+                    option = ((option%5))
+                else:
+                    option +=1
 
             elif event.key == pygame.K_1:
                 rend.setShaders(vertex_shader, fragment_shader)
@@ -141,6 +150,7 @@ while isRunning:
         zDistance = cos(radians(rend.angle))
         rend.camPosition.x = xDistance * rend.camDistance + rend.target.x 
         rend.camPosition.z = zDistance * rend.camDistance + rend.target.z 
+
 
     
     if keys[K_LEFT]:
