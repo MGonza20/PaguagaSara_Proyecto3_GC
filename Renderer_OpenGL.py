@@ -28,13 +28,35 @@ clicking_r = False
 def renderModel(option):
     if option == 1:
         face = Model("models\SurgeonFish\SurgeonFish.obj", "models\SurgeonFish\SurgeonFish.bmp")
+        face.scale.x = 2
+        face.scale.y = 2
+        face.scale.z = 2
+
     if option == 2:
         face = Model("models\MandarinFish\MandarinFish.obj", "models\MandarinFish\MandarinFish.bmp")
-           
+        face.scale.x = 0.5
+        face.scale.y = 0.5
+        face.scale.z = 0.5
+
+    if option == 3:
+        face = Model("models\Scallop\scallop.obj", "models\Scallop\scallop.bmp")
+        face.scale.x = 0.5
+        face.scale.y = 0.5
+        face.scale.z = 0.5
+
+    if option == 4:
+        face = Model("models\Seahorse\Seahorse.obj", "models\Seahorse\Seahorse.bmp")
+        face.scale.x = 0.5/10
+        face.scale.y = 0.5/10
+        face.scale.z = 0.5/10
+
+    if option == 5:
+        face = Model("models\Starfish\Starfish.obj", "models\Starfish\Starfish.bmp")
+        face.scale.x = 2.5
+        face.scale.y = 2.5
+        face.scale.z = 2.5
+
     face.position.z -= 5
-    face.scale.x = 0.5
-    face.scale.y = 0.5
-    face.scale.z = 0.5
 
     return face
 
@@ -74,9 +96,9 @@ while isRunning:
                 rend.wireframeMode()
             
             elif event.key == pygame.K_RETURN:
-                if option > 1:
+                if option > 4:
                     option += 1                    
-                    option = ((option%2))
+                    option = ((option%5))
                     rend.scene.clear()
                     rend.scene.append(renderModel(option))
                 else:
