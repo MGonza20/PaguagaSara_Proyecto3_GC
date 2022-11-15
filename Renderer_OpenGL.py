@@ -25,14 +25,15 @@ isRunning = True
 clicking = False
 clicking_r = False
 
-while isRunning:
-    
 
+while isRunning: 
 
     print(option)
 
-
-    face = Model("models\MandarinFish\MandarinFish.obj", "models\MandarinFish\MandarinFish.bmp")
+    if option == 1:
+        face = Model("models\MandarinFish\MandarinFish.obj", "models\MandarinFish\MandarinFish.bmp")
+    elif option == 2:
+        face = Model("models\SurgeonFish\SurgeonFish.obj", "models\SurgeonFish\SurgeonFish.bmp")
            
     face.position.z -= 5
     face.scale.x = 0.5
