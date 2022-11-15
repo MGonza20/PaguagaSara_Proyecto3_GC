@@ -25,25 +25,28 @@ isRunning = True
 clicking = False
 clicking_r = False
 
+def renderModel(option):
 
-while isRunning: 
-
-    print(option)
+    face = Model("models\SurgeonFish\SurgeonFish.obj", "models\SurgeonFish\SurgeonFish.bmp")
 
     if option == 1:
-        face = Model("models\MandarinFish\MandarinFish.obj", "models\MandarinFish\MandarinFish.bmp")
-    elif option == 2:
         face = Model("models\SurgeonFish\SurgeonFish.obj", "models\SurgeonFish\SurgeonFish.bmp")
+    if option == 2:
+        face = Model("models\MandarinFish\MandarinFish.obj", "models\MandarinFish\MandarinFish.bmp")
            
     face.position.z -= 5
     face.scale.x = 0.5
     face.scale.y = 0.5
     face.scale.z = 0.5
 
-    rend.scene.append( face )
+    return face
 
+
+face = renderModel(option)
+rend.scene.append(face)
+
+while isRunning: 
     
-
     keys = pygame.key.get_pressed()
     mouse_x, mouse_y = pygame.mouse.get_pos()
 
@@ -74,10 +77,15 @@ while isRunning:
                 rend.wireframeMode()
             
             elif event.key == pygame.K_RETURN:
-                if option > 5:
-                    option = ((option%5))
+                if option > 1:
+                    print('op', option)
+                    option += 1                    
+                    option = ((option%2))
+                    rend.scene = [renderModel(option)]
                 else:
+                    print('op', option)
                     option +=1
+                    rend.scene = [renderModel(option)]
 
             elif event.key == pygame.K_1:
                 rend.setShaders(vertex_shader, fragment_shader)

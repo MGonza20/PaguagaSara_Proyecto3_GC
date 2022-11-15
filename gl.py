@@ -1,10 +1,9 @@
-import glm #pip install PyGLM
+import glm 
 
 from numpy import array, float32
 import pygame
 
 
-# pip install PyOpenGL
 from OpenGL.GL import *
 from OpenGL.GL.shaders import compileProgram, compileShader
 
