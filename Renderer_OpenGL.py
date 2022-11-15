@@ -26,9 +26,6 @@ clicking = False
 clicking_r = False
 
 def renderModel(option):
-
-    face = Model("models\SurgeonFish\SurgeonFish.obj", "models\SurgeonFish\SurgeonFish.bmp")
-
     if option == 1:
         face = Model("models\SurgeonFish\SurgeonFish.obj", "models\SurgeonFish\SurgeonFish.bmp")
     if option == 2:
@@ -41,9 +38,9 @@ def renderModel(option):
 
     return face
 
-
 face = renderModel(option)
 rend.scene.append(face)
+
 
 while isRunning: 
     
@@ -78,14 +75,14 @@ while isRunning:
             
             elif event.key == pygame.K_RETURN:
                 if option > 1:
-                    print('op', option)
                     option += 1                    
                     option = ((option%2))
-                    rend.scene = [renderModel(option)]
+                    rend.scene.clear()
+                    rend.scene.append(renderModel(option))
                 else:
-                    print('op', option)
                     option +=1
-                    rend.scene = [renderModel(option)]
+                    rend.scene.clear()
+                    rend.scene.append(renderModel(option))
 
             elif event.key == pygame.K_1:
                 rend.setShaders(vertex_shader, fragment_shader)
