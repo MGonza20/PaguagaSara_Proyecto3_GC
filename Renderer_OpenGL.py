@@ -31,31 +31,31 @@ mixer.music.play(-1)
 
 def renderModel(option):
     if option == 1:
-        face = Model("models\SurgeonFish\SurgeonFish.obj", "models\SurgeonFish\SurgeonFish.bmp")
+        face = Model("models\SurgeonFish\SurgeonFish.obj", "models\SurgeonFish\SurgeonFish.bmp", "dispTex.bmp")
         face.scale.x = 2
         face.scale.y = 2
         face.scale.z = 2
 
     if option == 2:
-        face = Model("models\MandarinFish\MandarinFish.obj", "models\MandarinFish\MandarinFish.bmp")
+        face = Model("models\MandarinFish\MandarinFish.obj", "models\MandarinFish\MandarinFish.bmp", "dispTex.bmp")
         face.scale.x = 0.5
         face.scale.y = 0.5
         face.scale.z = 0.5
 
     if option == 3:
-        face = Model("models\Scallop\scallop.obj", "models\Scallop\scallop.bmp")
+        face = Model("models\Scallop\scallop.obj", "models\Scallop\scallop.bmp", "dispTex.bmp")
         face.scale.x = 0.5
         face.scale.y = 0.5
         face.scale.z = 0.5
 
     if option == 4:
-        face = Model("models\Seahorse\Seahorse.obj", "models\Seahorse\Seahorse.bmp")
+        face = Model("models\Seahorse\Seahorse.obj", "models\Seahorse\Seahorse.bmp", "dispTex.bmp")
         face.scale.x = 0.5/10
         face.scale.y = 0.5/10
         face.scale.z = 0.5/10
 
     if option == 5:
-        face = Model("models\Starfish\Starfish.obj", "models\Starfish\Starfish.bmp")
+        face = Model("models\Starfish\Starfish.obj", "models\Starfish\Starfish.bmp", "dispTex.bmp")
         face.scale.x = 2.5
         face.scale.y = 2.5
         face.scale.z = 2.5
@@ -120,6 +120,9 @@ while isRunning:
                 rend.setShaders(explode_vertex_shader, explode_fragment_shader)
             elif event.key == pygame.K_5:
                 rend.setShaders(explode_vertex_shader, lightPower_fragment_shader)
+            elif event.key == pygame.K_6:
+                rend.setShaders(vertex_shader, displacement_fragment_shader)
+            
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:

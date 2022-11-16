@@ -191,3 +191,21 @@ void main()
 }
 '''
 
+displacement_fragment_shader ='''
+#version 450 core
+
+out vec4 fragColor;
+
+in vec2 UVs;
+in vec3 norms;
+in vec3 pos;
+
+uniform vec3 pointLight;
+uniform sampler2D dispTex;
+
+void main()
+{
+    float intensity = dot(norms, normalize(pointLight - pos));
+    fragColor = texture(dispTex, UVs) * 0.6;
+}
+'''

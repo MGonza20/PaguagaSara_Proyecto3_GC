@@ -11,7 +11,7 @@ from obj import Obj
 from pygame import image 
 
 class Model(object):
-    def __init__(self, objName, textureName):
+    def __init__(self, objName, textureName, dispTextureName=None):
         self.model = Obj(objName)
 
         self.createVertexBuffer()
@@ -23,6 +23,11 @@ class Model(object):
         self.textureSurface = image.load(textureName)
         self.textureData = image.tostring(self.textureSurface, "RGB", True)
         self.texture = glGenTextures(1)
+
+        if dispTextureName is not None:
+            self.dispTextureSurface = image.load(dispTextureName)
+            self.dispTextureData = image.tostring(self.dispTextureSurface, "RGB", True)
+            self.dispTexture = glGenTextures(1)
 
     def createVertexBuffer(self):
         buffer = []
@@ -155,6 +160,23 @@ class Model(object):
         glDrawArrays(GL_TRIANGLES, 0, self.polycount * 3 )
 
 
+        # Dar la textura 
+        glActiveTexture(GL_TEXTURE1)
+        glBindTexture(GL_TEXTURE_2D, self.dispTexture)
+        glTexImage2D(GL_TEXTURE_2D,                     # Texture Type
+                     0,                                 # Positions
+                     GL_RGB,                            # Format
+                     self.dispTextureSurface.get_width(),   # Width
+                     self.dispTextureSurface.get_height(),  # Height
+                     0,                                 # Border
+                     GL_RGB,                            # Format
+                     GL_UNSIGNED_BYTE,                  # Type
+                     self.dispTextureData)                  # Data
+
+        glGenerateMipmap(GL_TEXTURE_2D)
+        glDrawArrays(GL_TRIANGLES, 0, self.polycount * 3 )
+
+
 class Renderer(object):
     def __init__(self, screen):
         self.screen = screen
@@ -239,7 +261,7 @@ class Renderer(object):
         self.viewMatrix = glm.lookAt(self.camPosition, self.target, glm.vec3(0, 1, 0))
 
     def render(self):
-        # glClearColor(0.2,0.2,0.2, 1)
+        glClearColor(0/255, 0, 255, 1)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
         if self.active_shader is not None:
@@ -252,6 +274,8 @@ class Renderer(object):
                                 1, GL_FALSE, glm.value_ptr(self.projectionMatrix))
 
             glUniform1i(glGetUniformLocation(self.active_shader, "tex"), 0) # i es un int
+
+            glUniform1i(glGetUniformLocation(self.active_shader, "dispTex"), 1) # i es un int
 
             glUniform1f(glGetUniformLocation(self.active_shader, "time"), self.time)
 
