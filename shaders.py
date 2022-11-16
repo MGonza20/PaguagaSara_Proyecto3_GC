@@ -201,11 +201,11 @@ in vec3 norms;
 in vec3 pos;
 
 uniform vec3 pointLight;
-uniform sampler2D dispTex;
+uniform sampler2D tex;
 
 void main()
 {
     float intensity = dot(norms, normalize(pointLight - pos));
-    fragColor = texture(dispTex, UVs) * 0.6;
+    fragColor = texture(tex, UVs) * intensity;
 }
 '''

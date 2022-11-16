@@ -17,7 +17,7 @@ screen = pygame.display.set_mode((width, height), pygame.OPENGL | pygame.DOUBLEB
 
 clock = pygame.time.Clock()
 
-rend = Renderer(screen)
+rend = Renderer(screen, "underwater-background.png")
 rend.setShaders(vertex_shader, fragment_shader)
 rend.target.z = -5
 

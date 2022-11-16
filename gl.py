@@ -178,11 +178,37 @@ class Model(object):
 
 
 class Renderer(object):
-    def __init__(self, screen):
+    def __init__(self, screen, bgTexName=None):
         self.screen = screen
         _, _, self.width, self.height = screen.get_rect()
 
+        if bgTexName is not None:
+            self.bgTextureSurface = image.load(bgTexName)
+            self.bgTextureData = image.tostring(self.bgTextureSurface, "RGB", True)
+            self.bgTexture = glGenTextures(1)
+
+        glDisable(GL_DEPTH_TEST)
+        # glViewport(0,0, self.width, self.height)
+        glEnable(GL_TEXTURE_2D) 
+        glBindTexture(GL_TEXTURE_2D, self.bgTexture)
+
+        glBegin(GL_QUADS)
+        glTexCoord2f(0.0,1.0)
+        glVertex2d(0,0)
+
+        glTexCoord2f(1.0,1.0);
+        glVertex2d(self.width,0)
+
+        glTexCoord2f(1.0,0.0);
+        glVertex2d(self.width,self.height)
+
+        glTexCoord2f(0.0,0.0)
+        glVertex2d(0,self.height)
+        glEnd()
+
+        glDisable(GL_TEXTURE_2D)
         glEnable(GL_DEPTH_TEST)
+
         glViewport(0,0, self.width, self.height)
 
         self.filledMode()
@@ -224,8 +250,6 @@ class Renderer(object):
     def wireframeMode(self):
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
 
-    
-
     def getViewMatrix(self):
         identity = glm.mat4(1)
 
@@ -261,7 +285,7 @@ class Renderer(object):
         self.viewMatrix = glm.lookAt(self.camPosition, self.target, glm.vec3(0, 1, 0))
 
     def render(self):
-        glClearColor(0/255, 0, 255, 1)
+        # glClearColor(0/255, 0, 255, 1)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
         if self.active_shader is not None:
