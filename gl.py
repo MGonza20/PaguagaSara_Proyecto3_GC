@@ -277,7 +277,7 @@ class Renderer(object):
         glTexCoord2f(0.0,1.0)
         glVertex2d(0,0)
 
-        glTexCoord2f(1.0,1.0);
+        glTexCoord2f(1.0,1.0)
         glVertex2d(self.width,0)
 
         glTexCoord2f(1.0,0.0);
