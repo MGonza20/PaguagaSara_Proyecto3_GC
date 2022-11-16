@@ -220,12 +220,20 @@ class Renderer(object):
         return glm.inverse(camMatrix)
 
 
-    def setShaders(self, vertexShader, fragmentShader):
-        if vertexShader is not None and fragmentShader is not None:
-            self.active_shader = compileProgram( compileShader(vertexShader, GL_VERTEX_SHADER),
-                                                 compileShader(fragmentShader, GL_FRAGMENT_SHADER))
-        else:
-            self.active_shader = None
+    def setShaders(self, vertexShader, fragmentShader, geometryShader=None):
+        if geometryShader is None:
+            if vertexShader is not None and fragmentShader is not None:
+                self.active_shader = compileProgram( compileShader(vertexShader, GL_VERTEX_SHADER),
+                                                    compileShader(fragmentShader, GL_FRAGMENT_SHADER))
+            else:
+                self.active_shader = None
+        elif geometryShader is not None:
+            if vertexShader is not None and fragmentShader is not None:
+                self.active_shader = compileProgram( compileShader(vertexShader, GL_VERTEX_SHADER),
+                                                     compileShader(geometryShader, GL_GEOMETRY_SHADER),
+                                                    compileShader(fragmentShader, GL_FRAGMENT_SHADER))
+            else:
+                self.active_shader = None
 
     def update(self):
         self.viewMatrix = glm.lookAt(self.camPosition, self.target, glm.vec3(0, 1, 0))

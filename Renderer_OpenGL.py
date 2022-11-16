@@ -1,6 +1,7 @@
 from math import radians, sin, cos
 import pygame
 from pygame.locals import *
+from pygame import mixer
 
 from shaders import *
 from gl import Renderer, Model
@@ -24,6 +25,9 @@ option = 1
 isRunning = True
 clicking = False
 clicking_r = False
+
+mixer.music.load('lift.wav')
+mixer.music.play(-1)
 
 def renderModel(option):
     if option == 1:
