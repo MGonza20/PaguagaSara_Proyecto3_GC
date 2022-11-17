@@ -6,7 +6,7 @@
 ### Zoom:
 - **Tecla q: zoom in**
 - **Tecla e: zoom out**
-  * Tomar en cuenta que se puede hacer scroll con el mouse.
+  -> Tomar en cuenta que se puede hacer scroll con el mouse.
 
 ### Movimiento circular alrededor del modelo:
 - **Tecla a: Orbitar modelo hacia la izquierda**
@@ -16,7 +16,7 @@
 - **Tecla w: Mover modelo hacia arriba**
 - **Tecla s: Mover modelo hacia abajo**
 
-* Tomar en cuenta que se pueden mover los modelos con el movimiento del mouse.
+-> Tomar en cuenta que se pueden mover los modelos con el movimiento del mouse.
 
 ### Shaders:
 - **Tecla 1: Gourad**
