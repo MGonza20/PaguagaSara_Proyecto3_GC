@@ -98,11 +98,17 @@ while isRunning:
             elif event.key == pygame.K_RETURN:
                 if option > 4:
                     option += 1                    
+                    sfx = mixer.Sound('sfx.wav')
+                    sfx.set_volume(rend.sound)
+                    sfx.play()
                     option = ((option%5))
                     rend.scene.clear()
                     rend.scene.append(renderModel(option))
                 else:
                     option +=1
+                    sfx = mixer.Sound('sfx.wav')
+                    sfx.set_volume(rend.sound)
+                    sfx.play()                    
                     rend.scene.clear()
                     rend.scene.append(renderModel(option))
 
