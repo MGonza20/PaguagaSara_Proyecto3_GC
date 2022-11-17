@@ -25,4 +25,13 @@
 - **Tecla 5: LightPower Shader**
     - **Tecla f: Para iluminar al modelo.** 
     - **Tecla c: Para quitarle iluminación al modelo.**
+- **Tecla 6: Displacement Shader**
+    - **Tecla j: Para añadir desplazamiento.** 
+    - **Tecla c: Para remover desplazamiento.**
+
+## Efectos:
+- **Volumen:**
+    - **Tecla m: Para subir volumen**
+    - **Tecla m: Para bajar volumen**
+
 
