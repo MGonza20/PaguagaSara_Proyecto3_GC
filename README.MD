@@ -29,7 +29,7 @@
     - **Tecla j: Para añadir desplazamiento.** 
     - **Tecla c: Para remover desplazamiento.**
 
-## Efectos:
+### Efectos:
 - **Volumen:**
     - **Tecla m: Para subir volumen**
     - **Tecla m: Para bajar volumen**
