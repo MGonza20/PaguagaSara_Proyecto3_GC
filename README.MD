@@ -37,7 +37,7 @@
 - **Volumen:**
     - **Tecla m: Para subir volumen**
     - **Tecla m: Para bajar volumen**
-- **Cambio de shaders:**
+- **Cambio de modelos:**
     - **Tecla enter.**
 
 
