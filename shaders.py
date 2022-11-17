@@ -211,6 +211,10 @@ void main()
     vec4 disp = texture2D(dispTex, UVs);
     vec2 dispUVs = vec2(UVs.x, UVs.y + change*disp);
     float intensity = dot(norms, normalize(pointLight - pos));
-    fragColor = texture(tex, dispUVs) * intensity;
+
+    vec4 texx = texture(tex, UVs);
+    vec4 texxx = texture(tex, dispUVs);
+
+    fragColor = (texx+texxx)*0.5* intensity;
 }
 '''

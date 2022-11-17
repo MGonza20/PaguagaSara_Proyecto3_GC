@@ -125,18 +125,6 @@ while isRunning:
             elif event.key == pygame.K_6:
                 rend.setShaders(vertex_shader, displacement_fragment_shader)
             
-
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1:
-                clicking = True   
-            if event.button == 3:
-                clicking_r = True   
-        elif event.type == pygame.MOUSEBUTTONUP:
-            if event.button == 1:
-                clicking = False   
-            if event.button == 3:
-                clicking_r = False
-
         elif event.type == pygame.MOUSEWHEEL:
             if(event.y < 0):
                 if rend.camDistance > 2:
