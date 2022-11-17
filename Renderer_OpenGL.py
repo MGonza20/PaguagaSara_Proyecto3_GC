@@ -71,21 +71,19 @@ rend.scene.append(face)
 while isRunning: 
     
     keys = pygame.key.get_pressed()
-    mouse_x, mouse_y = pygame.mouse.get_pos()
+    mouse_action = pygame.mouse.get_rel()
 
-    if clicking:
-        if mouse_x > width/2:
-            rend.angle -= 30 * deltaTime
-        elif mouse_x <= width/2:
-            rend.angle += 30 * deltaTime
+    if mouse_action[1] > 0:
+        if rend.camPosition.y < 1.5:
+            rend.camPosition.y += 3.5*deltaTime
+    elif mouse_action[1] < 0:
+        if rend.camPosition.y > -1.5:
+            rend.camPosition.y -= 3.5*deltaTime
 
-    if clicking_r:
-        if mouse_y > height/2:
-            if rend.camPosition.y < 1.5:
-                rend.camPosition.y += 3.5*deltaTime/2
-        elif mouse_y <= height/2:
-            if rend.camPosition.y > -1.5:
-                rend.camPosition.y -= 3.5*deltaTime/2
+    if mouse_action[0] > 0:
+        rend.angle -= 80 * deltaTime
+    elif mouse_action[0] < 0:
+        rend.angle += 80 * deltaTime
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -202,7 +200,7 @@ while isRunning:
 
 
     rend.update()
-    rend.render("underwater-background.png")
+    rend.render()
     pygame.display.flip()
 
 pygame.quit()
