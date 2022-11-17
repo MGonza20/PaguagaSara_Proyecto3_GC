@@ -212,6 +212,7 @@ class Renderer(object):
         self.explode_color = 0.0
 
         self.force = 0.0
+        self.change = 0.0
 
         # Projection Matrix
         self.projectionMatrix = glm.perspective(glm.radians(60),        # FOV
@@ -292,6 +293,8 @@ class Renderer(object):
             glUniform1f(glGetUniformLocation(self.active_shader, "explodeColor"), self.explode_color) 
 
             glUniform1f(glGetUniformLocation(self.active_shader, "force"), self.force)
+
+            glUniform1f(glGetUniformLocation(self.active_shader, "change"), self.change)
 
         for obj in self.scene:
             if self.active_shader is not None:

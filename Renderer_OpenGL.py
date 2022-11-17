@@ -169,6 +169,13 @@ while isRunning:
         elif keys[K_c]:
             if rend.force >= 0.0:
                 rend.force -= 1.0 * deltaTime
+
+        if keys[K_j]:
+            if rend.change < 1:
+                rend.change += 2*deltaTime
+        elif keys[K_k]:
+            if rend.change > 0.0:
+                rend.change -= 2*deltaTime
     
         if keys[K_a]:
             rend.angle -= 30 * deltaTime

@@ -202,10 +202,15 @@ in vec3 pos;
 
 uniform vec3 pointLight;
 uniform sampler2D tex;
+uniform sampler2D dispTex;
+uniform float change;
+
 
 void main()
 {
+    vec4 disp = texture2D(dispTex, UVs);
+    vec2 dispUVs = vec2(UVs.x, UVs.y + change*disp);
     float intensity = dot(norms, normalize(pointLight - pos));
-    fragColor = texture(tex, UVs) * intensity;
+    fragColor = texture(tex, dispUVs) * intensity;
 }
 '''
