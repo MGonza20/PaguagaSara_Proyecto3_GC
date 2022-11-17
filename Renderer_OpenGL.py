@@ -10,11 +10,9 @@ width = 960
 height = 540
 
 deltaTime = 0.0
-
 pygame.init()
 
 screen = pygame.display.set_mode((width, height), pygame.OPENGL | pygame.DOUBLEBUF)
-
 clock = pygame.time.Clock()
 
 rend = Renderer(screen)
@@ -23,11 +21,10 @@ rend.target.z = -5
 
 option = 1
 isRunning = True
-clicking = False
-clicking_r = False
 
 mixer.music.load('lift.wav')
 mixer.music.play(-1)
+
 
 def renderModel(option):
     if option == 1:
@@ -72,6 +69,7 @@ while isRunning:
     
     keys = pygame.key.get_pressed()
     mouse_action = pygame.mouse.get_rel()
+    mixer.music.set_volume(rend.sound)
 
     if mouse_action[1] > 0:
         if rend.camPosition.y < 1.5:
@@ -177,6 +175,16 @@ while isRunning:
         elif keys[K_s]:
             if rend.camPosition.y > -1.5:
                 rend.camPosition.y -= 5 * deltaTime*2
+
+        if keys[K_m]:
+            if rend.sound < 1:
+                rend.sound += 0.1
+        elif keys[K_n]:
+            if rend.sound >= 0:            
+                rend.sound -= 0.1
+                
+
+
 
         rend.target.y = rend.camPosition.y 
         xDistance = sin(radians(rend.angle))
