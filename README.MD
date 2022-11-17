@@ -36,8 +36,12 @@
 ### Efectos:
 - **Volumen:**
     - **Tecla m: Para subir volumen**
-    - **Tecla m: Para bajar volumen**
+    - **Tecla n: Para bajar volumen**
 - **Cambio de modelos:**
     - **Tecla enter.**
+
+### Modos:
+- **Tecla z: Filled mode**
+- **Tecla x: Wireframe mode**
 
 
