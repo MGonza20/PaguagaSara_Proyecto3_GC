@@ -261,7 +261,7 @@ class Renderer(object):
         self.viewMatrix = glm.lookAt(self.camPosition, self.target, glm.vec3(0, 1, 0))
 
     def render(self):
-        glClearColor(0/255, 0, 255, 1)
+        glClearColor(65/255, 109/255, 180/255, 1)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
         

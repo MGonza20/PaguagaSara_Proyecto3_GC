@@ -46,16 +46,16 @@ def renderModel(option):
         face.scale.z = 0.5
 
     if option == 4:
-        face = Model("models\Seahorse\Seahorse.obj", "models\Seahorse\Seahorse.bmp", "dispTex.bmp")
-        face.scale.x = 0.5/10
-        face.scale.y = 0.5/10
-        face.scale.z = 0.5/10
+        face = Model("models\koiFish\koiFish.obj", "models\koiFish\koiFish.png", "dispTex.bmp")
+        face.scale.x = 0.55
+        face.scale.y = 0.55
+        face.scale.z = 0.55
 
     if option == 5:
-        face = Model("models\Starfish\Starfish.obj", "models\Starfish\Starfish.bmp", "dispTex.bmp")
-        face.scale.x = 2.5
-        face.scale.y = 2.5
-        face.scale.z = 2.5
+        face = Model("models\scalarFish\scalarFish.obj", "models\scalarFish\scalarFish.png", "dispTex.bmp")
+        face.scale.x = 1
+        face.scale.y = 1
+        face.scale.z = 1
 
     face.position.z -= 5
 
@@ -69,7 +69,7 @@ while isRunning:
     
     keys = pygame.key.get_pressed()
     mouse_action = pygame.mouse.get_rel()
-    mixer.music.set_volume(rend.sound)
+    mixer.music.set_volume(round(rend.sound,1))
 
     if mouse_action[1] > 0:
         if rend.camPosition.y < 1.5:
@@ -96,19 +96,18 @@ while isRunning:
                 rend.wireframeMode()
             
             elif event.key == pygame.K_RETURN:
+                sfx = mixer.Sound('sfx.wav')
                 if option > 4:
                     option += 1                    
-                    sfx = mixer.Sound('sfx.wav')
-                    sfx.set_volume(rend.sound)
                     sfx.play()
+                    sfx.set_volume(rend.sound + 0.011000000000000551)
                     option = ((option%5))
                     rend.scene.clear()
                     rend.scene.append(renderModel(option))
                 else:
                     option +=1
-                    sfx = mixer.Sound('sfx.wav')
-                    sfx.set_volume(rend.sound)
                     sfx.play()                    
+                    sfx.set_volume(rend.sound + 0.011000000000000551)
                     rend.scene.clear()
                     rend.scene.append(renderModel(option))
 
@@ -178,14 +177,12 @@ while isRunning:
                 rend.camPosition.y -= 5 * deltaTime*2
 
         if keys[K_m]:
-            if rend.sound < 1:
-                rend.sound += 0.1
+            if rend.sound < 1.0:
+                rend.sound += deltaTime
         elif keys[K_n]:
-            if rend.sound >= 0:            
-                rend.sound -= 0.1
+            if rend.sound > 0.0:            
+                rend.sound -= deltaTime
                 
-
-
 
         rend.target.y = rend.camPosition.y 
         xDistance = sin(radians(rend.angle))

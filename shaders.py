@@ -214,7 +214,6 @@ void main()
 
     vec4 texx = texture(tex, UVs);
     vec4 texxx = texture(tex, dispUVs);
-
     fragColor = (texx+texxx)*0.5* intensity;
 }
 '''
