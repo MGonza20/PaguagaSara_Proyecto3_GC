@@ -31,7 +31,7 @@
     - **Tecla c: Para quitarle iluminación al modelo.**
 - **Tecla 6: Displacement Shader**
     - **Tecla j: Para añadir desplazamiento.** 
-    - **Tecla c: Para remover desplazamiento.**
+    - **Tecla k: Para remover desplazamiento.**
 
 ### Efectos:
 - **Volumen:**
