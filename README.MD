@@ -6,6 +6,7 @@
 ### Zoom:
 - **Tecla q: zoom in**
 - **Tecla e: zoom out**
+  * Tomar en cuenta que se puede hacer scroll con el mouse.
 
 ### Movimiento circular alrededor del modelo:
 - **Tecla a: Orbitar modelo hacia la izquierda**
@@ -14,6 +15,8 @@
 ### Movimiento vertical con límites:
 - **Tecla w: Mover modelo hacia arriba**
 - **Tecla s: Mover modelo hacia abajo**
+
+* Tomar en cuenta que se pueden mover los modelos con el movimiento del mouse.
 
 ### Shaders:
 - **Tecla 1: Gourad**
@@ -33,5 +36,7 @@
 - **Volumen:**
     - **Tecla m: Para subir volumen**
     - **Tecla m: Para bajar volumen**
+- **Cambio de shaders:**
+    - **Tecla enter.**
 
 
