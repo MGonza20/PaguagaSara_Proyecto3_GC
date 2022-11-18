@@ -14,8 +14,8 @@
 - **Tecla d: Orbitar modelo hacia la derecha**
 
 ### Movimiento vertical con límites:
-- **Tecla w: Mover modelo hacia arriba**
-- **Tecla s: Mover modelo hacia abajo**
+- **Tecla s: Mover modelo hacia arriba**
+- **Tecla w: Mover modelo hacia abajo**
 
 -> Tomar en cuenta que se pueden mover los modelos con el movimiento del mouse.
 
