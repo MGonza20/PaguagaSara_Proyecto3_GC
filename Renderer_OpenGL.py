@@ -46,16 +46,22 @@ def renderModel(option):
         face.scale.z = 0.5
 
     if option == 4:
-        face = Model("models\koiFish\koiFish.obj", "models\koiFish\koiFish.png", "dispTex.bmp")
-        face.scale.x = 0.55
-        face.scale.y = 0.55
-        face.scale.z = 0.55
+        face = Model("models\Seahorse\Seahorse.obj", "models\Seahorse\Seahorse.bmp", "dispTex.bmp")
+        face.scale.x = 0.5/10
+        face.scale.y = 0.5/10
+        face.scale.z = 0.5/10
 
     if option == 5:
         face = Model("models\scalarFish\scalarFish.obj", "models\scalarFish\scalarFish.png", "dispTex.bmp")
         face.scale.x = 1
         face.scale.y = 1
         face.scale.z = 1
+
+    if option == 6:
+        face = Model("models\koiFish\koiFish.obj", "models\koiFish\koiFish.png", "dispTex.bmp")
+        face.scale.x = 0.55
+        face.scale.y = 0.55
+        face.scale.z = 0.55
 
     face.position.z -= 5
 
@@ -97,11 +103,11 @@ while isRunning:
             
             elif event.key == pygame.K_RETURN:
                 sfx = mixer.Sound('sfx.wav')
-                if option > 4:
+                if option > 5:
                     option += 1                    
                     sfx.play()
                     sfx.set_volume(rend.sound + 0.011000000000000551)
-                    option = ((option%5))
+                    option = ((option%6))
                     rend.scene.clear()
                     rend.scene.append(renderModel(option))
                 else:
