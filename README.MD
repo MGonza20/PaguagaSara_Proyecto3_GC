@@ -1,5 +1,5 @@
 
-# Open GL - Cameras - Gráficas por Computadora
+# Open GL - Proyecto 3 - Gráficas por Computadora
 
 ## Comandos de uso 
 
