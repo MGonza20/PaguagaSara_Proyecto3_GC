@@ -201,7 +201,7 @@ class Renderer(object):
         self.waveFrequency = glm.vec2(3.4, 2)
 
         self.value = 0
-        self.sound = 0.7
+        self.sound = 0.5
 
         # ViewMatrix
         self.camPosition = glm.vec3(0,0,0)
