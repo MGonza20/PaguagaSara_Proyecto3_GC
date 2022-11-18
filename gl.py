@@ -197,8 +197,8 @@ class Renderer(object):
         self.angle = 0
         self.camDistance = 5
 
-        self.waveDepth = 0.2
-        self.waveFrequency = glm.vec2(4.0, 1.5)
+        self.waveDepth = 0.15
+        self.waveFrequency = glm.vec2(3.4, 2)
 
         self.value = 0
         self.sound = 0.7
