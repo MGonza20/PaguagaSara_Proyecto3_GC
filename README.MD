@@ -45,3 +45,10 @@
 - **Tecla x: Wireframe mode**
 
 
+## Ejecución del programa
+
+Para ejecutar el programa solamente es necesario ejecutar el comando a continuación:
+
+```bash
+  py Renderer_OpenGL.py
+```
